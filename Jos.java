@@ -38,7 +38,10 @@ class Jos {
         if (cl.MethodCount > 0) cl.method = new MethodParse(classbyte, cl).Parse();
         cl.attributes_count=classbyte.getShort();
         if (cl.attributes_count > 0) cl.Attributes = new AttributesParse(classbyte, cl).Parse();
-
         classstr.close();
+
+        for (Method m : cl.method) {
+            new VisitAttributes(m.attributes).Visit();
+        }
     }
 }
