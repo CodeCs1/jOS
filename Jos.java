@@ -2,6 +2,9 @@ import java.io.*;
 import java.nio.ByteBuffer;
 
 import Class.*;
+import Class.Method.*;
+import Class.Attributes.*;
+import Class.Field.FieldParse;
 
 class Jos {
     private static void Println(Object obj) {
@@ -27,18 +30,14 @@ class Jos {
         cl.this_class = classbyte.getShort();
         cl.super_class = classbyte.getShort();
         cl.Interfaces_count = classbyte.getShort();
-        if (cl.Interfaces_count > 0) {
-            //TODO: Adding Interface support
-        }
+        //interface = class interface
+        if (cl.Interfaces_count > 0) {}
         cl.FieldCount = classbyte.getShort();
-        if (cl.FieldCount > 0) //TODO: Adding Field Support
-
+        if (cl.FieldCount > 0) cl.Field=new FieldParse(classbyte, cl).Parse();
         cl.MethodCount = classbyte.getShort();
-
-        if (cl.MethodCount > 0)
-
-
+        if (cl.MethodCount > 0) cl.method = new MethodParse(classbyte, cl).Parse();
         cl.attributes_count=classbyte.getShort();
+        if (cl.attributes_count > 0) cl.Attributes = new AttributesParse(classbyte, cl).Parse();
 
         classstr.close();
     }

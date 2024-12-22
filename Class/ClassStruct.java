@@ -1,6 +1,9 @@
 package Class;
 import java.util.LinkedList;
 import Class.Constant.ConstantInfo;
+import Class.Field.Field;
+import Class.Method.Method;
+import Class.Attributes.Attributes;
 
 public class ClassStruct {
     public Integer Magic;
@@ -14,9 +17,9 @@ public class ClassStruct {
     public Short Interfaces_count;
     public byte[] Interfaces;
     public Short FieldCount;
-    public byte[] Field;
+    public LinkedList<Field> Field;
     public short MethodCount;
-    public byte[] Method;
+    public LinkedList<Method> method;
     public Short attributes_count;
-    public byte[] Attributes;
+    public LinkedList<Attributes> Attributes;
 }
